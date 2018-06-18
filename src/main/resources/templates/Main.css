@@ -1,0 +1,8 @@
+img {
+max-width:50px;
+max-height:50px;
+}
+* html img {
+width:expression(this.width > 50 ? "50px" : "auto");
+height:expression(this.height > 50 ? "50px" : "auto");
+}

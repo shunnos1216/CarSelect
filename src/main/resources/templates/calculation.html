@@ -1,0 +1,20 @@
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- 計算用 -->
+
+
+<form method="post" th:action="@{/calculation}">
+
+<!-- DBTest 実習を参考に記述 -->
+
+
+<ul>
+	<li>	「DBから持ってこれた。<span th:text="${incomee}"></span>です。」</li>
+</ul>
+
+  <input type="hidden" name="car_id" th:value="${car_id}"/> 
+ <input type="submit" />
+</form>
+
+</body>
+</html>

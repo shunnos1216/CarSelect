@@ -1,0 +1,70 @@
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+ 			<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+			<title>収入⇔自家用車 車種選択</title>
+	</head>
+	<body>
+<h1>その収入でその車買えるの？</h1>
+<br>
+<h3>夢のカーライフを実現できるか判定するよ</h3>
+<br>
+
+<h3><li>Sクラス</li></h3>
+<br>
+<TABLE> 
+<table border="1" cellpadding="0" width="10">
+ 	<TR ALIGN=CENTER VALIGN=TOP> 
+ 	<!--   <TD>[MercedesBenz S550]<BR><a href="inserts550.html"><IMG SRC ="s5501.jpg" ></img></a></TD> -->
+ 	<!--   <TD>[MercedesBenz S550]<BR><form method="get" th:action="@{/post}"><IMG SRC ="s5501.jpg" ></img></form></TD> -->
+ 	
+	<TD>[MercedesBenz S550]<BR><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg" ></img></a></TD><!-- データベースidと紐づける -->
+	<TD>[LEXUS LX]<BR><a th:href ="@{/balance/7}"  ><IMG SRC ="lx11.jpg" ></img></a></TD> 
+  	<TD>[NISSAN GT-R]<BR><a th:href ="@{/balance/2}"  ><IMG SRC ="gtr1.jpg" ></img></a></TD> 
+ 	</TR> 
+ </TABLE>
+ <br>
+ <br>
+ 
+ 
+ <h3><li>Aクラス</li></h3>
+ <br>
+ <TABLE> 
+<table border="1" cellpadding="0" width="10">
+	 <TR ALIGN=CENTER VALIGN=TOP>
+	 <TD>[TOYOTA Alphard]<BR><a th:href ="@{/balance/9}"  ><IMG SRC ="alphad11.jpg" ></img></a></TD>
+	 <TD>[BMW 318i]<BR><a th:href ="@{/balance/10}"  ><IMG SRC ="bmw31.jpg" ></img></a></TD>
+	 <TD>[SUBARU WRX STI]<BR><a th:href ="@{/balance/1}"  ><IMG SRC ="wrxsti11.jpg" ></img></a></TD> 
+ </TR> 
+ </table>
+
+<br>
+<br>
+
+ <h3><li>Bクラス</li></h3>
+ <br>
+ <TABLE>  
+<table border="1" cellpadding="0" width="10">
+ <TR ALIGN=CENTER VALIGN=TOP> 
+  <TD>[TOYOTA PRIUS]<BR><a th:href ="@{/balance/11}"  ><IMG SRC ="prius11.jpg" ></img></a></TD>
+  <TD>[NISSAN X-trail]<BR><a th:href ="@{/balance/12}"  ><IMG SRC ="xtrail11.jpg" ></img></a></TD> 
+  <TD>[SUZUKI SwiftSports]<BR><a th:href ="@{/balance/3}"  ><IMG SRC ="swift11.jpg" ></img></a></TD> 
+ </TR> 
+</table>
+
+<br>
+<br>
+
+ <h3><li>Cクラス</li></h3>
+<br>
+ <TABLE> 
+<table border="1" cellpadding="0" width="10">
+	<TR ALIGN=CENTER VALIGN=TOP>
+	<TD>[TOYOTA AQUA]<BR><a th:href ="@{/balance/5}"  ><IMG SRC ="aqua11.jpg" ></img></a></TD>
+	<TD>[SUZUKI HUSTLER]<BR><a th:href ="@{/balance/6}"  ><IMG SRC ="hustler11.jpg" ></img></a></TD>
+	<TD>[DAIHATSU ]<BR><a th:href ="@{/balance/4}"  ><IMG SRC ="copen11.jpg" ></img></a></TD> 
+ </TR> 
+</table>
+
+</body>
+</html>
