@@ -37,15 +37,14 @@
 /* 	ユーザー情報入力用テーブル*/
 　CREATE TABLE userspec(
  	user_name VARCHAR(200), income FLOAT,rent FLOAT, utility_c FLOAT, commu_c FLOAT, budget FLOAT,
- 	parking FLOAT,running FLOAT, loan FLOAT,PRIMARY KEY(user_name));
+ 	parking FLOAT,running FLOAT,deposit FLOAT, loan FLOAT,PRIMARY KEY(user_name));
  	
  	
  	
 /*結果格納テーブル　入力内容と計算結果をDBへ再び格納*/
 　CREATE TABLE result(
- 	car_name VARCHAR(100), car_price FLOAT, month_total FLOAT, fuel_ec FLOAT, income FLOAT,
- 	rent FLOAT,utility_e FLOAT, comm_c FLOAT,parking FLOAT, running FLOAT, loan FLOAT,
- 	repayment FLOAT, gas FLOAT, totalcost FLOAT, budget FLOAT,PRIMARY KEY(car_name));
+ 	car_id int, car_tax FLOAT, weight_tax FLOAT, liability_ins FLOAT, voluntary_ins FLOAT, month_total FLOAT, f_type FLOAT,  price FLOAT,fuel_ec FLOAT, income FLOAT, rent FLOAT, utility_c FLOAT, comm_c FLOAT,parking FLOAT, running FLOAT, loan FLOAT,
+ 	repayment FLOAT, gas FLOAT, totalcost FLOAT, budget FLOAT);
  		
  
 /* 	ユーザー情報入力用テーブル2*/

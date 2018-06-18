@@ -105,7 +105,7 @@ public class Carscontroller {
 	}
 	
 	@PostMapping("/cost") //ユーザー情報取得2 cost.html TABLE user_cost
-	public String cost(String user_name,double parking, double running, int loan,int car_id,RedirectAttributes attr){
+	public String cost(String user_name,double parking, double running,double deposit, int loan,int car_id,RedirectAttributes attr){
 	    
 		System.out.println("checked PM2");//確認用
 		
@@ -115,14 +115,16 @@ public class Carscontroller {
 		attr.addFlashAttribute("parking", parking);
 	    attr.addFlashAttribute("running", running);
 	    attr.addFlashAttribute("loan", loan);
+	    attr.addFlashAttribute("deposit", deposit);
 
 	    //確認用2
 	    System.out.println(parking);
 	    System.out.println(running);
 	    System.out.println(loan);
+	    System.out.println(deposit);
 	    System.out.println("car_id:" + car_id);
 
-	    jdbc.update("UPDATE userspec SET parking = ?,running = ?, loan = ?  ", parking,running,loan);
+	    jdbc.update("UPDATE userspec SET parking = ?,running = ?, deposit = ?, loan = ? ", parking,running,deposit,loan);
 	    
 	    //jdbc.update("UPDATE userspec SET parking = ?,running = ?, loan = ? WHERE user_name = user_ name ", parking,running,loan);
 	    //user_name　レコードと対応させる
@@ -152,6 +154,7 @@ public class Carscontroller {
 			
 		
 		//DBより車両情報取得
+		//Map<String, Object>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id).get(0);//車両名
 		List<Map<String, Object>>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id);//車両名
 		Map<String, Object>car_tax = jdbc.queryForList("SELECT car_tax FROM cars WHERE car_id = ? ", car_id).get(0);//自動車税
 		Map<String, Object>weight_tax = jdbc.queryForList("SELECT weight_tax FROM cars WHERE car_id = ? ", car_id).get(0);//重量税
@@ -179,14 +182,27 @@ public class Carscontroller {
 		
 		
 		//double型に変換
+//		double car_n = Double.valueOf(car_name.get("name").toString());//車種名		
+//		System.out.println("test" + car_n);
+		
+		
 		double car_t = Double.valueOf(car_tax.get("car_tax").toString());//自動車税
 		System.out.println("test" + car_t);
 		
 		double weight_t = Double.valueOf(weight_tax.get("weight_tax").toString());//重量税
 		System.out.println("test" + weight_t);
-		
-		double liability_i = Double.valueOf(liability_ins.get("liability_ins").toString());//月間固定費
+			
+		double liability_i = Double.valueOf(liability_ins.get("liability_ins").toString());//自賠保険
 		System.out.println("test" + liability_i);
+		
+		double voluntary_i = Double.valueOf(voluntary_ins.get("voluntary_ins").toString());//任意保険
+		System.out.println("test" + voluntary_i);
+		
+		double month_t = Double.valueOf(month_total.get("month_total").toString());//月間固定費
+		System.out.println("test" + month_t);
+
+		double fuel_t = Double.valueOf(f_type.get("f_type").toString());//油種
+		System.out.println("test" + fuel_t);
 		
 		double car_p = Double.valueOf(car_price.get("price").toString());//車両価格
 		System.out.println("test" + car_p);
@@ -202,7 +218,8 @@ public class Carscontroller {
 		Map<String, Object>commu_c = jdbc.queryForList("SELECT commu_c FROM userspec").get(0);//通信費
 		Map<String, Object>parking = jdbc.queryForList("SELECT parking FROM userspec").get(0);//駐車場代
 		Map<String, Object>running = jdbc.queryForList("SELECT running FROM userspec").get(0);//走行距離
-		Map<String, Object>loan = jdbc.queryForList("SELECT loan FROM userspec").get(0);
+		Map<String, Object>deposit = jdbc.queryForList("SELECT deposit FROM userspec").get(0);
+		Map<String, Object>loan = jdbc.queryForList("SELECT loan FROM userspec").get(0);//ローン支払い回数
 		
 		//double型に変換
 		double income_e = Double.valueOf(income.get("income").toString());//月収
@@ -217,62 +234,101 @@ public class Carscontroller {
 		System.out.println("test" + parking_e);
 		double running_e = Double.valueOf(running.get("running").toString());//走行距離
 		System.out.println("test" + running_e);
+		double deposit_e = Double.valueOf(deposit.get("deposit").toString());//走行距離
+		System.out.println("test" + running_e);
 		double loan_e = Double.valueOf(loan.get("loan").toString());//ローン支払い回数
 		System.out.println("test" + loan_e);
 		
-		System.out.println("車種は" + car_name);
 		
-		//維持費計算
+		System.out.println("車種: " + car_name);	
+		System.out.println("車体価格: " + car_p);
+		System.out.println("頭金: " + deposit_e);
+		System.out.println("ローン支払い回数: " + loan_e);
+		
 		double repayment;//月々のローン返済額
-		repayment = car_p / loan_e;
-		System.out.println("月々のローン返済額　" + repayment+ "万円");
+		repayment = ( car_p - deposit_e ) / loan_e;
+		System.out.println("月々のローン返済額:　" + repayment+ "万円");
 		
 		double gas;//月々のガソリン代
 		double gas_price;//ガソリン価格/l
 		gas_price = 0.0145;//ガソリン価格を145円と仮定
 		gas = gas_price * running_e;
-		System.out.println("月々のガソリン代" + gas+ "円");
+		System.out.println("月々のガソリン代: " + gas+ "円");
 		
 		double totalcost;//月々の維持費合計
 		totalcost = month_t + repayment + gas + parking_e;
-		System.out.println("車に掛かるお金は　" + totalcost + "万円");
+		System.out.println("車に掛かるお金:　" + totalcost + "万円");
 		
 		
 		//家計計算
 		double budget;
 		budget = income_e - (rent_e + utility_e + commu_e);
-		System.out.println("車に使えるお金は　" + budget+ "万円");
+		System.out.println("車に使えるお金:　" + budget+ "万円");
 		
 		
-//		
-//		jdbc.update("INSERT INTO result (car_name,car_price,month_total,fuel_ec,income,rent,utility_e,"
-//				+ "comm_c,parking,running,loan,repayment.gas,totalcost.budget) "
-//				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
-//				car_name,car_price,rent,utility_c,commu_c);
+		//車種・ユーザー情報・計算結果をDB resultテーブルに格納
+		jdbc.update("INSERT INTO result (car_id,car_tax,weight_tax,liability_ins,voluntary_ins,month_total,f_type,price,fuel_ec,"
+				+ "income,rent,utility_c,comm_c,parking,running,loan,repayment,gas,totalcost,budget) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
+				car_id,car_t,weight_t,liability_i,voluntary_i,month_t,fuel_t,car_p,fuel_e,income_e,rent_e,utility_e,commu_e,parking_e,
+				running_e,loan_e,repayment,gas,totalcost,budget);
 		
 		
+		//jdbc.update("INSERT INTO result (car_id,price,fuel_ec,income,rent,utility_c,comm_c,parking,running,loan,repayment,gas,totalcost,budget) "
+				//+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
+			//	car_id,car_p,fuel_e,income_e,rent_e,utility_e,commu_e,parking_e,running_e,loan_e,repayment,gas,totalcost,budget);
+		
+		//jdbc.queryForList("SELECT * FROM result INNER JOIN cars ON result.car_id = cars.car_id WHERE result.car_id = ?",car_id);
+		
+		
+		
+	
 		// where でユーザーid指定 1レコードを持ってきたいから queryMap
 	    ////Map<String, Object> person = jdbc.queryForMap("SELECT * FROM userspec where name = ?", name).get(0);
 
-	    
+		//attr.addAttribute("peoples",jdbc.queryForList("SELECT * FROM result"));
+		
+		
 		return "redirect:/purchasable";
-		 
+		
 	}
 	
 	
 	@GetMapping("/purchasable")
 	public String purchasable(Model model) {
 	
-//		model.addAttribute("car_id", car_id);	
-		//System.out.println("car_id;　" + car_id);
+		
 		
 		return "purchasable";
 	
 	}
 	
-}
 	
 	
+	@PostMapping("/purchasable")
+	public String calculation(int car_id,RedirectAttributes attr){
+	
+		attr.addFlashAttribute("car_id", car_id);
+		System.out.println("checked purchasable" + car_id);//確認用
+		
+		jdbc.queryForList("SELECT car_name FROM result INNER JOIN cars ON result.car_id = cars.car_id WHERE result.car_id = ?",car_id);
+		
+		
+		
+		
+		
+		
+		attr.addFlashAttribute("results",jdbc.queryForList("SELECT * FROM result"));
+		
+		
+	
+		return "result";
+	
+	}
+	
+	
+	
+}	
 
 
 //"redirect:/calculation";
