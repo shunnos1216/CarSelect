@@ -293,7 +293,7 @@ public class Carscontroller {
 			System.out.println("車に使えるお金(" + budget + "万円) >" + "維持費(" + totalcost + "万円)");
 			
 			attr.addFlashAttribute("car_name", car_name);
-			attr.addFlashAttribute("ｔ", car_name);
+			attr.addFlashAttribute("ｔotalcost", totalcost);
 			
 			return "purchasable";
 		}else {
@@ -302,6 +302,9 @@ public class Carscontroller {
 			System.out.println("車に使えるお金(" + budget + "万円) <" + "維持費(" + totalcost + "万円)");
 			
 			attr.addFlashAttribute("car_name", car_name);
+			attr.addFlashAttribute("ｔotalcost", totalcost);
+			
+			
 			return "unpurchasable";
 			
 		}
