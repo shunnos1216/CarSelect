@@ -160,8 +160,16 @@ public class Carscontroller {
 		
 		
 		//DBより車両情報取得
-		//Map<String, Object>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id).get(0);//車両名
-		List<Map<String, Object>>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id);//車両名
+		//Map<String,Object> = map SELECT * FROM table WHRE id = ?,id
+		//以下の情報は Map<Stiring, object> =  jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id)で一行で持ってこれる
+		
+		
+		
+		//Map<String, Object>cars = jdbc.queryForList("SELECT * FROM cars WHERE car_id = ? ", car_id).get(0);
+		
+		
+		
+		Map<String, Object>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id).get(0);//車両名
 		Map<String, Object>car_tax = jdbc.queryForList("SELECT car_tax FROM cars WHERE car_id = ? ", car_id).get(0);//自動車税
 		Map<String, Object>weight_tax = jdbc.queryForList("SELECT weight_tax FROM cars WHERE car_id = ? ", car_id).get(0);//重量税
 		Map<String, Object>liability_ins = jdbc.queryForList("SELECT liability_ins FROM cars WHERE car_id = ? ", car_id).get(0);//自賠責保険
@@ -170,10 +178,19 @@ public class Carscontroller {
 		Map<String, Object>f_type = jdbc.queryForList("SELECT f_type FROM cars WHERE car_id = ? ", car_id).get(0);//油種
 		Map<String, Object>car_price = jdbc.queryForList("SELECT price FROM price WHERE car_id = ? ", car_id).get(0);//車両価格
 		Map<String, Object>fuel = jdbc.queryForList("SELECT fuel_ec FROM fuel WHERE car_id = ? ", car_id).get(0);//燃費
+		
+		
+		
 		//List<Map<String, Object>>fuel = jdbc.queryForList("SELECT fuel_ec FROM fuel WHERE car_id = ? ", car_id);//燃費
+		//List<Map<String, Object>>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id);//車両名
+		
+		
 		
 	
-		System.out.println(car_name);
+		
+		
+		
+		System.out.println(car_name.get("name"));
 		System.out.println(car_tax);
 		System.out.println(weight_tax);
 		System.out.println(liability_ins);
@@ -261,19 +278,21 @@ public class Carscontroller {
 		double gas;//月々のガソリン代
 		double gas_price;//ガソリン価格/l
 		
-		gas_price = 0.0150;
+		
+		
+		gas_price = 0.015;
 //		if (fuel_t = 1.00) {
 //			gas_price = 145;
 //		}else {
 //			gas_price = 155;
 //		}
 		
-		gas = running_e/fuel_e * gas_price;
+		String.format("%.2f",gas = running_e/fuel_e * gas_price);
 		System.out.println("月々のガソリン代: " + gas+ "円");
 		
 		double totalcost;//月々の維持費合計
-		totalcost = month_t + repayment + gas + parking_e;
-		System.out.println("車に掛かるお金:　" + totalcost + "万円");
+		String.format("%.2f",totalcost = month_t + repayment + gas + parking_e);
+		System.out.println("車に掛かるお金:　" + String.format("%.2f",totalcost) + "万円");
 		
 		
 		//家計計算
@@ -284,7 +303,7 @@ public class Carscontroller {
 		
 		//差額計算		
 		
-		System.out.println("-----------------------------------------------");
+		System.out.println("-------------------以下判定--------------------");
 		
 		//購入・維持ができるか判定
 		if (budget > totalcost) {
@@ -292,27 +311,66 @@ public class Carscontroller {
 			System.out.println("購入可能");
 			System.out.println("車に使えるお金(" + budget + "万円) >" + "維持費(" + totalcost + "万円)");
 			
-			attr.addFlashAttribute("car_name", car_name);
-			attr.addFlashAttribute("ｔotalcost", totalcost);
+			System.out.println(car_name);
+			System.out.println(totalcost);
 			
-			return "purchasable";
+			attr.addFlashAttribute("car_name", car_name.get("name"));
+			attr.addFlashAttribute("budget", budget);
+//			attr.addFlashAttribute("ｔotalcost", String.format("%.2f",totalcost));
+			attr.addFlashAttribute("totalcost", String.format("%.2f",totalcost));
+			attr.addFlashAttribute("car_t", car_t);
+			attr.addFlashAttribute("weight_t", weight_t);
+			attr.addFlashAttribute("liability_i", liability_i);
+			attr.addFlashAttribute("voluntary_i", voluntary_i);
+			attr.addFlashAttribute("month_t", month_t);
+			attr.addFlashAttribute("car_p", car_p);
+			attr.addFlashAttribute("loan_e", loan_e);
+			
+			return "redirect:/purchasable";
 		}else {
 		
 			System.out.println("購入不可");
 			System.out.println("車に使えるお金(" + budget + "万円) <" + "維持費(" + totalcost + "万円)");
 			
-			attr.addFlashAttribute("car_name", car_name);
-			attr.addFlashAttribute("ｔotalcost", totalcost);
+			System.out.println(car_name);
+		
+			System.out.println(totalcost);
+			
+			attr.addFlashAttribute("car_name", car_name.get("name"));
+			attr.addFlashAttribute("budget", budget);
+			attr.addFlashAttribute("totalcost", String.format("%.2f",totalcost));
+			attr.addFlashAttribute("car_t", car_t);
+			attr.addFlashAttribute("weight_t", weight_t);
+			attr.addFlashAttribute("liability_i", liability_i);
+			attr.addFlashAttribute("voluntary_i", voluntary_i);
+			attr.addFlashAttribute("month_t", month_t);
+			attr.addFlashAttribute("car_p", car_p);
+			attr.addFlashAttribute("loan_e", loan_e);
 			
 			
-			return "unpurchasable";
+			return "redirect:/unpurchasable";
 			
 		}
 		
 	}
 	
 		
-		
+	
+	@GetMapping("/purchasable")
+	public String purchasable(Model model) {
+	
+		return "purchasable";
+	
+	}
+	
+	@GetMapping("/unpurchasable")
+	public String unpurchasable(Model model) {
+	
+		return "unpurchasable";
+	
+	}
+	
+	
 		
 		//車種・ユーザー情報・計算結果をDB resultテーブルに格納1
 //		jdbc.update("INSERT INTO result (car_id,car_tax,weight_tax,liability_ins,voluntary_ins,month_total,f_type,price,fuel_ec,"

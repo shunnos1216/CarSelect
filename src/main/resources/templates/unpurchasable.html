@@ -6,17 +6,27 @@
 
 
 
-あなたは<span th:text="${car_name}"></span>を購入することができません！
+<h1>あなたは<span th:text="${car_name}"></span>を購入することができません！</h1><br>
 
 
-
-
-	<p>あなたの月々の車に使えるお金</p>
-	<span th:text ="${car_name}"></span>万円
+	<h3></h3><p>あなたの月々の車に使えるお金</p></h3>
+	<span th:text ="${budget}"></span>万円
 
 	
-	<p><span th:text="${car_name}"></span>を維持するのに必要な月々の経費</p>
 
+
+	<h3><p><span th:text="${car_name}"></span>を維持するのに必要な月々な支出</p></h3>
+	<p><span th:text ="${totalcost}"></span>万円</p>
+
+
+
+
+	<h3>月間維持費内訳</h3>
+	<p>自動車税：<span th:text="${car_t}"></span>万円</p>
+	<p>ローン支払い<span th:text ="${loan_e}"></span>万円</p>
+	
+	
+	
 
 </div>
 </body>
