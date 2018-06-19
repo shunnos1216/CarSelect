@@ -3,16 +3,21 @@
 <!-- 計算用 -->
 <title>購入できます！</title>
 
-<div　 method="post" th:each="@{/purchasable}">
-
-あなたは（車種名）を購入することができます！
-
-<p>あなたの月々の車に使えるお金</p>
 
 
+<div　 method="post" th:action="@{/calculation}">
+
+	あなたは<span th:text="${car_name}"></span>を購入することができます！<br>
 
 
-<p>（車種）　を維持するのに必要な月々な支出</p>
+	<p>あなたの月々の車に使えるお金</p>
+	<span th:text ="${budget}"></span>万円
+
+	
+	<p><span th:text="${car_name}"></span>を維持するのに必要な月々の経費</p>
+
+	<p>（車種）　を維持するのに必要な月々な支出</p>
+	<span th:text ="${totalcost}"></span>万円
 
 
 <input type="hidden" name="car_id" th:value="${car_id}"/> 

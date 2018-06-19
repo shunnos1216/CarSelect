@@ -67,7 +67,7 @@ public class Carscontroller {
 
 	
 	@PostMapping("/balance") //ユーザー収支情報取得 balance.html TABLE userspec
-	public String balance(String user_name,double income, double rent, double utility_c, double commu_c,int car_id, RedirectAttributes attr){
+	public String balance(String user_name,double income, double rent, double utility_c, double commu_c,int car_id,double expense_c, RedirectAttributes attr){
 	    
 		
 		System.out.println("checked PM1");//確認用
@@ -79,7 +79,8 @@ public class Carscontroller {
 	    attr.addFlashAttribute("utility_c", utility_c);
 	    attr.addFlashAttribute("commu_c", commu_c);
 	    attr.addFlashAttribute("car_id", car_id);
-	    
+	    attr.addFlashAttribute("car_id", car_id);
+	    attr.addFlashAttribute("expense_c", expense_c );
 	    
 	    //確認用2
 		System.out.println(user_name);
@@ -87,11 +88,12 @@ public class Carscontroller {
 	    System.out.println(rent);
 	    System.out.println(utility_c);
 	    System.out.println(commu_c);
+	    System.out.println(expense_c);
 	    System.out.println("car_id:" + car_id);
 	    
 	    
-		jdbc.update("INSERT INTO userspec (user_name,income,rent,utility_c,commu_c) values(?,?,?,?,?);",
-				user_name,income,rent,utility_c,commu_c); //DB userspec TABLEに格納
+		jdbc.update("INSERT INTO userspec (user_name,income,rent,utility_c,commu_c,expense_c) values(?,?,?,?,?,?);",
+				user_name,income,rent,utility_c,commu_c,expense_c); //DB userspec TABLEに格納
 		
 		//jdbc.update("UPDATE userspec SET income = ?,rent = ?, utility_c = ? , commu_c = ?", 
 			//	income, rent, utility_c, commu_c);
@@ -153,6 +155,10 @@ public class Carscontroller {
 		System.out.println("car_id" + car_id);
 			
 		
+		int result_flg;
+		
+		
+		
 		//DBより車両情報取得
 		//Map<String, Object>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id).get(0);//車両名
 		List<Map<String, Object>>car_name = jdbc.queryForList("SELECT name FROM cars WHERE car_id = ? ", car_id);//車両名
@@ -187,28 +193,28 @@ public class Carscontroller {
 		
 		
 		double car_t = Double.valueOf(car_tax.get("car_tax").toString());//自動車税
-		System.out.println("test" + car_t);
+		System.out.println("test自動車税" + car_t);
 		
 		double weight_t = Double.valueOf(weight_tax.get("weight_tax").toString());//重量税
-		System.out.println("test" + weight_t);
+		System.out.println("test重量税" + weight_t);
 			
 		double liability_i = Double.valueOf(liability_ins.get("liability_ins").toString());//自賠保険
-		System.out.println("test" + liability_i);
+		System.out.println("test自賠責保険" + liability_i);
 		
 		double voluntary_i = Double.valueOf(voluntary_ins.get("voluntary_ins").toString());//任意保険
-		System.out.println("test" + voluntary_i);
+		System.out.println("test任意保険" + voluntary_i);
 		
 		double month_t = Double.valueOf(month_total.get("month_total").toString());//月間固定費
-		System.out.println("test" + month_t);
+		System.out.println("test月間固定費" + month_t);
 
-		double fuel_t = Double.valueOf(f_type.get("f_type").toString());//油種
-		System.out.println("test" + fuel_t);
+		Integer fuel_t = Integer.valueOf(f_type.get("f_type").toString());//油種
+		System.out.println("test油種" + fuel_t);
 		
 		double car_p = Double.valueOf(car_price.get("price").toString());//車両価格
-		System.out.println("test" + car_p);
+		System.out.println("test車両価格" + car_p);
 		
 		double fuel_e = Double.valueOf(fuel.get("fuel_ec").toString());//燃費
-		System.out.println("test" + fuel_e);
+		System.out.println("test燃費" + fuel_e);
 		
 		
 		//DBよりユーザー情報取得 ※useridと対応させる
@@ -216,6 +222,7 @@ public class Carscontroller {
 		Map<String, Object>rent = jdbc.queryForList("SELECT rent FROM userspec").get(0);//家賃
 		Map<String, Object>utility_c = jdbc.queryForList("SELECT utility_c FROM userspec").get(0);//光熱費
 		Map<String, Object>commu_c = jdbc.queryForList("SELECT commu_c FROM userspec").get(0);//通信費
+		Map<String, Object>expense_c = jdbc.queryForList("SELECT expense_c FROM userspec").get(0);//通信費
 		Map<String, Object>parking = jdbc.queryForList("SELECT parking FROM userspec").get(0);//駐車場代
 		Map<String, Object>running = jdbc.queryForList("SELECT running FROM userspec").get(0);//走行距離
 		Map<String, Object>deposit = jdbc.queryForList("SELECT deposit FROM userspec").get(0);
@@ -223,21 +230,23 @@ public class Carscontroller {
 		
 		//double型に変換
 		double income_e = Double.valueOf(income.get("income").toString());//月収
-		System.out.println("test" + income_e);
+		System.out.println("test月収" + income_e);
 		double rent_e = Double.valueOf(rent.get("rent").toString());//家賃
-		System.out.println("test" + rent_e);
+		System.out.println("test家賃" + rent_e);
 		double utility_e = Double.valueOf(utility_c.get("utility_c").toString());//光熱費
-		System.out.println("test" + utility_e);
+		System.out.println("test光熱費" + utility_e);
 		double commu_e= Double.valueOf(commu_c.get("commu_c").toString());//通信費
-		System.out.println("test" + commu_e);
+		System.out.println("test通信費" + commu_e);
+		double expense_e= Double.valueOf(expense_c.get("expense_c").toString());//交際費
+		System.out.println("test交際費" + commu_e);
 		double parking_e= Double.valueOf(parking.get("parking").toString());//駐車場代
-		System.out.println("test" + parking_e);
+		System.out.println("test駐車場代 " + parking_e);
 		double running_e = Double.valueOf(running.get("running").toString());//走行距離
-		System.out.println("test" + running_e);
-		double deposit_e = Double.valueOf(deposit.get("deposit").toString());//走行距離
-		System.out.println("test" + running_e);
+		System.out.println("test走行距離" + running_e);
+		double deposit_e = Double.valueOf(deposit.get("deposit").toString());//頭金
+		System.out.println("test頭金" + deposit);
 		double loan_e = Double.valueOf(loan.get("loan").toString());//ローン支払い回数
-		System.out.println("test" + loan_e);
+		System.out.println("testローン支払い回数" + loan_e);
 		
 		
 		System.out.println("車種: " + car_name);	
@@ -251,8 +260,15 @@ public class Carscontroller {
 		
 		double gas;//月々のガソリン代
 		double gas_price;//ガソリン価格/l
-		gas_price = 0.0145;//ガソリン価格を145円と仮定
-		gas = gas_price * running_e;
+		
+		gas_price = 0.0150;
+//		if (fuel_t = 1.00) {
+//			gas_price = 145;
+//		}else {
+//			gas_price = 155;
+//		}
+		
+		gas = running_e/fuel_e * gas_price;
 		System.out.println("月々のガソリン代: " + gas+ "円");
 		
 		double totalcost;//月々の維持費合計
@@ -262,18 +278,47 @@ public class Carscontroller {
 		
 		//家計計算
 		double budget;
-		budget = income_e - (rent_e + utility_e + commu_e);
+		budget = income_e - (rent_e + utility_e + commu_e + expense_e);
 		System.out.println("車に使えるお金:　" + budget+ "万円");
 		
 		
-		//車種・ユーザー情報・計算結果をDB resultテーブルに格納
-		jdbc.update("INSERT INTO result (car_id,car_tax,weight_tax,liability_ins,voluntary_ins,month_total,f_type,price,fuel_ec,"
-				+ "income,rent,utility_c,comm_c,parking,running,loan,repayment,gas,totalcost,budget) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
-				car_id,car_t,weight_t,liability_i,voluntary_i,month_t,fuel_t,car_p,fuel_e,income_e,rent_e,utility_e,commu_e,parking_e,
-				running_e,loan_e,repayment,gas,totalcost,budget);
+		//差額計算		
+		
+		System.out.println("-----------------------------------------------");
+		
+		//購入・維持ができるか判定
+		if (budget > totalcost) {
+		
+			System.out.println("購入可能");
+			System.out.println("車に使えるお金(" + budget + "万円) >" + "維持費(" + totalcost + "万円)");
+			
+			attr.addFlashAttribute("car_name", car_name);
+			attr.addFlashAttribute("ｔ", car_name);
+			
+			return "purchasable";
+		}else {
+		
+			System.out.println("購入不可");
+			System.out.println("車に使えるお金(" + budget + "万円) <" + "維持費(" + totalcost + "万円)");
+			
+			attr.addFlashAttribute("car_name", car_name);
+			return "unpurchasable";
+			
+		}
+		
+	}
+	
 		
 		
+		
+		//車種・ユーザー情報・計算結果をDB resultテーブルに格納1
+//		jdbc.update("INSERT INTO result (car_id,car_tax,weight_tax,liability_ins,voluntary_ins,month_total,f_type,price,fuel_ec,"
+//				+ "income,rent,utility_c,comm_c,parking,running,loan,repayment,gas,totalcost,budget) "
+//				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
+//				car_id,car_t,weight_t,liability_i,voluntary_i,month_t,fuel_t,car_p,fuel_e,income_e,rent_e,utility_e,commu_e,parking_e,
+//				running_e,loan_e,repayment,gas,totalcost,budget);
+		
+		//種・ユーザー情報・計算結果をDB resultテーブルに格納2
 		//jdbc.update("INSERT INTO result (car_id,price,fuel_ec,income,rent,utility_c,comm_c,parking,running,loan,repayment,gas,totalcost,budget) "
 				//+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?);",
 			//	car_id,car_p,fuel_e,income_e,rent_e,utility_e,commu_e,parking_e,running_e,loan_e,repayment,gas,totalcost,budget);
@@ -289,42 +334,22 @@ public class Carscontroller {
 		//attr.addAttribute("peoples",jdbc.queryForList("SELECT * FROM result"));
 		
 		
-		return "redirect:/purchasable";
-		
-	}
+//		return "redirect:/purchasable";
+//		
+//	}
 	
 	
-	@GetMapping("/purchasable")
-	public String purchasable(Model model) {
+//	@GetMapping("/purchasable")
+//	public String purchasable(Model model) {
+//	
+//		
+//		
+//		return "purchasable";
+//	
+//	}
 	
-		
-		
-		return "purchasable";
-	
-	}
 	
 	
-	
-	@PostMapping("/purchasable")
-	public String calculation(int car_id,RedirectAttributes attr){
-	
-		attr.addFlashAttribute("car_id", car_id);
-		System.out.println("checked purchasable" + car_id);//確認用
-		
-		jdbc.queryForList("SELECT car_name FROM result INNER JOIN cars ON result.car_id = cars.car_id WHERE result.car_id = ?",car_id);
-		
-		
-		
-		
-		
-		
-		attr.addFlashAttribute("results",jdbc.queryForList("SELECT * FROM result"));
-		
-		
-	
-		return "result";
-	
-	}
 	
 	
 	
