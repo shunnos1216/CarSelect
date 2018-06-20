@@ -1,82 +1,180 @@
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ja">
 	<head>
-		<meta charset="UTF-8" />
- 			<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
-			<title>収入⇔自家用車 車種選択</title>
+	<!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="index.css" /> -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>タイトル</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+		
+ 			
+		<title>収入⇔自家用車 車種選択</title>
+		
+<!-- 		<link rel="stylesheet" href="/css/index.css" th:href="@{/css/index.css}"> -->
+		
 	</head>
 	<body>
+
+
+	
+<div class = "jumbotron text-center"
+	style="background:url(key.jpg); color:#FFF;
+	backgroud-size:100% auto;">	<!-- 背景;文字色 -->
 <h1>その収入でその車買えるの？</h1>
-<br>
+
 <h3>夢のカーライフを実現できるか判定するよ</h3>
-<br><!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+</div>
 
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-   
+  
 
-<h3><li>Sクラス</li></h3>
+<h2><p class="text-center">Sクラス</p></h2>
 <br>
-<TABLE> 
-<table border="1" cellpadding="0" width="10">
- 	<TR ALIGN=CENTER VALIGN=TOP> 
- 	<!--   <TD>[MercedesBenz S550]<BR><a href="inserts550.html"><IMG SRC ="s5501.jpg" ></img></a></TD> -->
- 	<!--   <TD>[MercedesBenz S550]<BR><form method="get" th:action="@{/post}"><IMG SRC ="s5501.jpg" ></img></form></TD> -->
+
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4"><br><div style="width:403px;height:274.8px;border: solid 1px  #333333; "><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg"alt="ベンツS550" border="10"/></a></div></div>
+		
+<!-- 		<div class="col-sm-4"><br><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg"alt="ベンツS550" border="10"/></a></div> -->
+		
+    	<div class="col-sm-4"><br><div style="margin-right : 2px;width:410px;height:274.8px;border: solid 1px  #333333; "><a th:href ="@{/balance/7}"  ><IMG SRC ="lx112.jpg" ></img></a></div></div>
+    	
+    	<div class="col-sm-4"><br><div style="width:410px;height:274.8px;border: solid 1px  #333333; "><a th:href ="@{/balance/2}"  ><IMG SRC ="gtr1.jpg" ></img></a></div></div>
+	</div>
+</div>
+
+
+
+
+
+<!-- テーブルレスポンシブ -->
+<!-- テーブルレスポンシブル -->
+<!-- <div class="table-responsive"> -->
+<!--   <table class="table"> -->
+<!-- 	<table border="1" cellpadding="0" width="10" align="center"> -->
+<!-- 	<TR ALIGN=CENTER VALIGN=TOP>  -->
+<!-- 	<TD>[MercedesBenz S550]<BR><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg" ></img></a></TD>データベースidと紐づける -->
+<!-- 	<TD>[LEXUS LX]<BR><a th:href ="@{/balance/7}"  ><IMG SRC ="lx11.jpg" ></img></a></TD>  -->
+<!--   	<TD>[NISSAN GT-R]<BR><a th:href ="@{/balance/2}"  ><IMG SRC ="gtr1.jpg" ></img></a></TD>  -->
+	
+<!--   </table> -->
+<!-- </div> -->
+
+
+
+<br>
+<br>
+
+
+<!-- <!-- 標準　table --> 
+<!-- <TABLE>  -->
+<!-- <table border="1" cellpadding="0" width="10" align="center"> -->
+<!--  	<TR ALIGN=CENTER VALIGN=TOP>  -->
+<!--  	<!--   <TD>[MercedesBenz S550]<BR><a href="inserts550.html"><IMG SRC ="s5501.jpg" ></img></a></TD> --> 
+<!--  	<!--   <TD>[MercedesBenz S550]<BR><form method="get" th:action="@{/post}"><IMG SRC ="s5501.jpg" ></img></form></TD> --> 
  	
-	<TD>[MercedesBenz S550]<BR><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg" ></img></a></TD><!-- データベースidと紐づける -->
-	<TD>[LEXUS LX]<BR><a th:href ="@{/balance/7}"  ><IMG SRC ="lx11.jpg" ></img></a></TD> 
-  	<TD>[NISSAN GT-R]<BR><a th:href ="@{/balance/2}"  ><IMG SRC ="gtr1.jpg" ></img></a></TD> 
- 	</TR> 
- </TABLE>
+<!-- 	<TD>[MercedesBenz S550]<BR><a th:href ="@{/balance/8}"  ><IMG SRC ="s5501.jpg" ></img></a></TD>データベースidと紐づける -->
+<!-- 	<TD>[LEXUS LX]<BR><a th:href ="@{/balance/7}"  ><IMG SRC ="lx11.jpg" ></img></a></TD>  -->
+<!--   	<TD>[NISSAN GT-R]<BR><a th:href ="@{/balance/2}"  ><IMG SRC ="gtr1.jpg" ></img></a></TD>  -->
+<!--  	</TR>  -->
+<!--  </TABLE> -->
+<!--  <br> -->
+<!--  <br> -->
+ 
+ <div class = "container"
+<h2><p class="text-center">Aクラス</p></h2>
  <br>
- <br>
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/9}"  ><IMG SRC ="alphad11.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/10}"  ><IMG SRC ="bmw31.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/1}"  ><IMG SRC ="wrxsti11.jpg" ></img></a></div></div>
+  </div>
+</div>
  
  
- <h3><li>Aクラス</li></h3>
+ 
+ 
+<!--  <TABLE>  -->
+<!-- <table border="1" cellpadding="0" width="10" align="center"> -->
+<!-- 	 <TR ALIGN=CENTER VALIGN=TOP> -->
+<!-- 	 <TD>[TOYOTA Alphard]<BR><a th:href ="@{/balance/9}"  ><IMG SRC ="alphad11.jpg" ></img></a></TD> -->
+<!-- 	 <TD>[BMW 318i]<BR><a th:href ="@{/balance/10}"  ><IMG SRC ="bmw31.jpg" ></img></a></TD> -->
+<!-- 	 <TD>[SUBARU WRX STI]<BR><a th:href ="@{/balance/1}"  ><IMG SRC ="wrxsti11.jpg" ></img></a></TD>  -->
+<!--  </TR>  -->
+<!--  </table> -->
+
+<br>
+<br>
+<h2><p class="text-center">Bクラス</p></h2>
  <br>
- <TABLE> 
-<table border="1" cellpadding="0" width="10">
-	 <TR ALIGN=CENTER VALIGN=TOP>
-	 <TD>[TOYOTA Alphard]<BR><a th:href ="@{/balance/9}"  ><IMG SRC ="alphad11.jpg" ></img></a></TD>
-	 <TD>[BMW 318i]<BR><a th:href ="@{/balance/10}"  ><IMG SRC ="bmw31.jpg" ></img></a></TD>
-	 <TD>[SUBARU WRX STI]<BR><a th:href ="@{/balance/1}"  ><IMG SRC ="wrxsti11.jpg" ></img></a></TD> 
- </TR> 
- </table>
+ 
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/11}"  ><IMG SRC ="prius11.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/12}"  ><IMG SRC ="xtrail11.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:408px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/3}"  ><IMG SRC ="swift11.jpg" ></img></a></div><div>
+  </div>
+</div>
+ 
+ 
+
+<!--  <TABLE>   -->
+<!-- <table border="1" cellpadding="0" width="10" align="center"> -->
+<!--  <TR ALIGN=CENTER VALIGN=TOP>  -->
+<!--   <TD>[TOYOTA PRIUS]<BR><a th:href ="@{/balance/11}"  ><IMG SRC ="prius11.jpg" ></img></a></TD> -->
+<!--   <TD>[NISSAN X-trail]<BR><a th:href ="@{/balance/12}"  ><IMG SRC ="xtrail11.jpg" ></img></a></TD>  -->
+<!--   <TD>[SUZUKI SwiftSports]<BR><a th:href ="@{/balance/3}"  ><IMG SRC ="swift11.jpg" ></img></a></TD>  -->
+<!--  </TR>  -->
+<!-- </table> -->
 
 <br>
 <br>
 
- <h3><li>Bクラス</li></h3>
- <br>
- <TABLE>  
-<table border="1" cellpadding="0" width="10">
- <TR ALIGN=CENTER VALIGN=TOP> 
-  <TD>[TOYOTA PRIUS]<BR><a th:href ="@{/balance/11}"  ><IMG SRC ="prius11.jpg" ></img></a></TD>
-  <TD>[NISSAN X-trail]<BR><a th:href ="@{/balance/12}"  ><IMG SRC ="xtrail11.jpg" ></img></a></TD> 
-  <TD>[SUZUKI SwiftSports]<BR><a th:href ="@{/balance/3}"  ><IMG SRC ="swift11.jpg" ></img></a></TD> 
- </TR> 
+<h2><p class="text-center">Cクラス</p></h2>
+<br>
+ <div class="container">
+  <div class="row">
+    <div class="col-sm-4"><BR><div style="width:405px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/5}"  ><IMG SRC ="aqua11.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:405px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/6}"  ><IMG SRC ="hustler11.jpg" ></img></a></div></div>
+    <div class="col-sm-4"><BR><div style="width:405px;height:279px;border: solid 1px  #333333; "><a th:href ="@{/balance/4}"  ><IMG SRC ="copen11.jpg" ></img></a></div></div>
+  </div>
+</div>
+ 
+
+
+
+
+<!--  <TABLE>  -->
+<!-- <table border="1" cellpadding="0" width="10" align="center"> -->
+<!-- 	<TR ALIGN=CENTER VALIGN=TOP> -->
+<!-- 	<TD>[TOYOTA AQUA]<BR><a th:href ="@{/balance/5}"  ><IMG SRC ="aqua11.jpg" ></img></a></TD> -->
+<!-- 	<TD>[SUZUKI HUSTLER]<BR><a th:href ="@{/balance/6}"  ><IMG SRC ="hustler11.jpg" ></img></a></TD> -->
+<!-- 	<TD>[DAIHATSU ]<BR><a th:href ="@{/balance/4}"  ><IMG SRC ="copen11.jpg" ></img></a></TD>  -->
+<!--  </TR>  -->
 </table>
 
-<br>
-<br>
 
- <h3><li>Cクラス</li></h3>
-<br>
- <TABLE> 
-<table border="1" cellpadding="0" width="10">
-	<TR ALIGN=CENTER VALIGN=TOP>
-	<TD>[TOYOTA AQUA]<BR><a th:href ="@{/balance/5}"  ><IMG SRC ="aqua11.jpg" ></img></a></TD>
-	<TD>[SUZUKI HUSTLER]<BR><a th:href ="@{/balance/6}"  ><IMG SRC ="hustler11.jpg" ></img></a></TD>
-	<TD>[DAIHATSU ]<BR><a th:href ="@{/balance/4}"  ><IMG SRC ="copen11.jpg" ></img></a></TD> 
- </TR> 
-</table>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+
+
 
 </body>
+
+
+
 </html>

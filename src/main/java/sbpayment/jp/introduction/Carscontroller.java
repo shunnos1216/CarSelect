@@ -281,10 +281,10 @@ public class Carscontroller {
 		
 		
 		gas_price = 0.015;
-//		if (fuel_t = 1.00) {
-//			gas_price = 145;
-//		}else {
+//		if (f_type = 1) {
 //			gas_price = 155;
+//		}else {
+//			gas_price = 145;
 //		}
 		
 		String.format("%.2f",gas = running_e/fuel_e * gas_price);
