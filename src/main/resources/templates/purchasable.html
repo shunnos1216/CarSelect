@@ -1,56 +1,176 @@
-<html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <!DOCTYPE html>
 <html lang="ja">
-	
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<title>購入可能です</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-	</head>
+<head>
 
 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>購入可能です</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<body> 
+</head>
+<body>
 
+	<div class="jumbotron text-center"
+		style="background: url(http://www.fate-car.com/60001509/wp-content/uploads/2015/07/30.jpg); color: #FFF; backgroud-size: 100% auto;">
+		<!-- 背景;文字色 -->
+		<h1>購入できます</h1>
+	</div>
 
+	<div 　 method="post" th:action="@{/calculation}">
 
-<div　 method="post" th:action="@{/calculation}">
-
-	<h1>あなたは<span th:text="${car_name}"></span>を購入することができます！</h1><br>
-
-
-	<h3></h3><p>あなたの月々の車に使えるお金</p></h3>
-	<span th:text ="${budget}"></span>万円
-
-	
-
-
-	<h3><p><span th:text="${car_name}"></span>を維持するのに必要な月々な支出</p></h3>
-	<p><span th:text ="${totalcost}"></span>万円</p>
-
-
-
-
-	<h2>月間維持費内訳</h2>
-	
-	<h3>税金・車検用積み立て</h3>
-	<table class="table table-striped">
-		<tr><th>項目</th><th>費用</th></tr>
-		<tr><td>自動車税</td><td><span th:text="${car_t}"></span>万円</td></tr>
-		<tr><td>ローン支払い</td><td><span th:text ="${loan_e}"></span>万円</td></tr>
-	</table>
-	
-	
-<input type="hidden" name="car_id" th:value="${car_id}"/> 
-</div>
+		<div class="row">
+			<div
+				class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8  col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 ">
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+				<div class="text-center">
+					<h1>
+						あなたは<span th:text="${car_name}"></span>を購入することができます！
+					</h1>
+				</div>
+				<br>
+
+
+				<div class="text-center">
+					<h2>
+						<p>
+						<li type="sqare">あなたの月々の車に使えるお金
+							</p>
+					</h2>
+					</li>
+				</div>
+				<div class="text-center">
+					<h2>
+						<span th:text="${budget}"></span>万円
+					</h2>
+				</div>
+
+
+
+
+				<div class="text-center">
+					<h2>
+						<p>
+						<li type="sqare"><span th:text="${car_name}"></span>を維持するのに必要な月々な支出
+							</p>
+					</h2>
+					</li>
+				</div>
+				<div class="text-center">
+					<h2>
+						<span th:text="${totalcost}"></span>万円
+					</h2>
+				</div>
+
+
+				<div class="text-center">
+					<h2>
+						<span th:text="${car_name}"></span>を購入したら毎月の自由に使えるお金は
+					</h2>
+				</div>
+				<div class="text-center">
+					<h2>
+						およそ<span class="text-success"></font><span th:text="${budget}"></span>万円</span></font>になります
+					</h2>
+
+					<div class="text-center">「愛車」のためならがんばれますよね。</div>
+
+
+					<h1 class="text-center">月間維持費内訳</h1>
+
+					<h2 class="text-center">
+						<span th:text="${car_name}"></span>を維持するのに毎月これだけのお金が掛かります
+					</h2>
+
+
+					<div class="text-center">
+						<h3>税金・車検用積み立て</h3>
+					</div>
+					<!--  表1 税金・車検用積み立て表 -->
+					<table class="table table-bordered table-hover table-condensed">
+
+						<thead>
+							<tr>
+								<th><h3>項目</h3></th>
+								<th><h3>費用</h3></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><h3>自動車税</h3></td>
+								<td><h3>
+										<span th:text="${car_t}"></span>万円
+									</h3></td>
+							</tr>
+							<tr>
+								<td><h3>重量税</h3></td>
+								<td><h3>
+										<span th:text="${weight_t}"></span>万円
+									</h3></td>
+							</tr>
+							<tr>
+								<td><h3>自賠責</h3></td>
+								<td><h3>
+										<span th:text="${liability_i}"></span>万円
+									</h3></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+					<div class="text-center">
+						<h2>月々の支払額</h2>
+					</div>
+					<!--  表2 月々の支払額 -->
+					<table
+						class="table table-bordered table-striped table-hover table-condensed">
+
+						<thead>
+							<tr>
+								<th><h3>項目</h3></th>
+								<th><h3>費用</h3></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><h3>ローン支払い</h3></td>
+								<td><h3>
+										<span th:text="${repayment}"></span>万円
+									</h3></td>
+							</tr>
+							<tr>
+								<td><h3>ガソリン代</h3></td>
+								<td><h3>
+										<span th:text="${gas}"></span>万円
+									</h3></td>
+							</tr>
+							<tr>
+								<td><h3>駐車場代</h3></td>
+								<td><h3>
+										<span th:text="${parking_e}"></span>万円
+									</h3></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+				</div>
+
+			</div>
+		</div>
+
+		<script
+			src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script
+			src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>

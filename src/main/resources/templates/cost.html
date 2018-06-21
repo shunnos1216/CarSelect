@@ -13,6 +13,8 @@
 
 </head>
 <body>
+
+
 <div class = "jumbotron text-center"
 	style="background:url(https://card-professor.jp/wp/wp-content/uploads/2016/11/bridgestone-carlife-support-663x409.jpg);color:#000;
  	backgroud-size:100% auto;">	<!--  背景;文字色 -->
@@ -21,25 +23,27 @@
 	<h3>夢のカーライフを実現できるか判定するよ</h3>
 </div>
 
-<h1 class="page-header text-center">どんなところでどれだけ乗りますか</h1>
 
 <div class="row">
-<div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-xs-9  col-sm-9 col-md-9">
+<div class="col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-xs-9  col-sm-9 col-md-9 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 ">
+
+<h1 class="page-header text-center">どんなところでどれだけ乗りますか</h1>
+
 
 
 <form class="form-horizontal" method="post" th:action="@{/cost}">　<!-- userランニングコスト情報取得　user_cost TABLEへ -->
 	
 	<div class="form-group">
-		<label class= "col-sm-3 control-label"><h2>駐車場代</h2></label>
-		<div class="col-sm-9">
+		<label class= "col-sm-5 control-label"><h2>駐車場代</h2></label>
+		<div class="col-sm-7">
 			<h2><input type="number" required step="0.01" name="parking" placeholder="駐車場代" >万円</h2>
 		</div>
 	</div>
 	
 	
 	<div class="form-group">
-		<label class= "col-sm-3 control-label"><h2>一か月の推定走行距離</h2></label>
-		<div class="col-sm-9">
+		<label class= "col-sm-5 control-label"><h2>一か月間の走行距離</h2></label>
+		<div class="col-sm-7">
  	 		<h2><input type="number"step="0.01" name="running" maxlength="3" placeholder="走行距離" />km</h2>
  	 	</div>
  	 </div>
@@ -47,15 +51,15 @@
  	 
  	  	 
  	 <div class="form-group">
-		<label class= "col-sm-3 control-label"><h2>頭金</h2></label>
-		<div class="col-sm-9">
+		<label class= "col-sm-5 control-label"><h2>頭金</h2></label>
+		<div class="col-sm-7">
 			<h2><input type="number" name="deposit" maxlength="3" placeholder="頭金" />万円</h2><br>
 		</div>
 	</div>
  
 	<div class="form-group">
-		<label class= "col-sm-3 control-label"><h2>ローン</h2></label>
-		<div class="col-sm-9">
+		<label class= "col-sm-5 control-label"><h2>ローン</h2></label>
+		<div class="col-sm-7">
 			<h2><input type="number" name="loan" placeholder="(ローンを組まない場合は0を入力)" />回払い</h2><br>
 			
 		</div>
@@ -64,43 +68,45 @@
 	
  	<input type="hidden" name="car_id" th:value="${car_id}"/>
  	
- 	<div class="col-sm-4"></div>
- 	
- 	<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
+ 	<div class="col-sm-offset-6 col-sm-6 ">
+ 		<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
+ 	</div>
  	 </form>
 
 
 
 
 
+</div>
+</div>
 
 
 
 
 
 <!-- 以下htmlベタ打ちver -->
-<form method="post" th:action="@{/cost}">　<!-- userランニングコスト情報取得　user_cost TABLEへ -->
+<!-- <form method="post" th:action="@{/cost}">　userランニングコスト情報取得　user_cost TABLEへ -->
 	
 	
-	<p>駐車場代</p>
-	<input type="number"step="0.01" name="parking" placeholder="駐車場代" >万円
+<!-- 	<p>駐車場代</p> -->
+<!-- 	<input type="number"step="0.01" name="parking" placeholder="駐車場代" >万円 -->
 	
- 	 <p>一か月あたりの推定走行距離</p>
- 	 <input type="number"step="0.01" name="running" placeholder="走行距離" />km
+<!--  	 <p>一か月あたりの推定走行距離</p> -->
+<!--  	 <input type="number"step="0.01" name="running" placeholder="走行距離" />km -->
  	 
  	 
- 	 <p>頭金</p>
-	<input type="number" name="deposit" placeholder="頭金" />万円<br>
+<!--  	 <p>頭金</p> -->
+<!-- 	<input type="number" name="deposit" placeholder="頭金" />万円<br> -->
  
-	<p>ローン</p>
-	(ローンを組まない場合は0を入力)<br>
-	<input type="number" name="loan" placeholder="	ローン" />回払い<br>
+<!-- 	<p>ローン</p> -->
+<!-- 	(ローンを組まない場合は0を入力)<br> -->
+<!-- 	<input type="number" name="loan" placeholder="	ローン" />回払い<br> -->
 	
- 	<input type="hidden" name="car_id" th:value="${car_id}"/>
+<!--  	<input type="hidden" name="car_id" th:value="${car_id}"/> -->
  	
- 	<input type="submit" value = 送信>
+<!--  	<input type="submit" value = 送信> -->
  	 
-</form>
+<!-- </form> -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>	 

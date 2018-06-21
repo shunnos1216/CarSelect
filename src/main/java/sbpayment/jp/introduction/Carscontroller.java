@@ -155,7 +155,7 @@ public class Carscontroller {
 		System.out.println("car_id" + car_id);
 			
 		
-		int result_flg;
+		
 		
 		
 		
@@ -188,8 +188,7 @@ public class Carscontroller {
 		
 	
 		
-		
-		
+
 		System.out.println(car_name.get("name"));
 		System.out.println(car_tax);
 		System.out.println(weight_tax);
@@ -302,6 +301,12 @@ public class Carscontroller {
 		
 		
 		//差額計算		
+		double difference;
+		difference = budget - totalcost;
+		
+		String url = ("https://www.carsensor.net/usedcar/search.php?SKIND=1&fed=toppcfws20150707001ta&KW=") + car_name.get("name");
+		
+		System.out.println(url);
 		
 		System.out.println("-------------------以下判定--------------------");
 		
@@ -325,7 +330,10 @@ public class Carscontroller {
 			attr.addFlashAttribute("month_t", month_t);
 			attr.addFlashAttribute("car_p", car_p);
 			attr.addFlashAttribute("loan_e", loan_e);
-			
+			attr.addFlashAttribute("repayment",String.format("%.2f",repayment));
+			attr.addFlashAttribute("parking_e", parking_e);
+			attr.addFlashAttribute("gas",String.format("%.2f",gas));
+			attr.addFlashAttribute("url",url);
 			return "redirect:/purchasable";
 		}else {
 		
@@ -336,6 +344,7 @@ public class Carscontroller {
 		
 			System.out.println(totalcost);
 			
+			difference = difference * -1; 
 			attr.addFlashAttribute("car_name", car_name.get("name"));
 			attr.addFlashAttribute("budget", budget);
 			attr.addFlashAttribute("totalcost", String.format("%.2f",totalcost));
@@ -346,6 +355,10 @@ public class Carscontroller {
 			attr.addFlashAttribute("month_t", month_t);
 			attr.addFlashAttribute("car_p", car_p);
 			attr.addFlashAttribute("loan_e", loan_e);
+			attr.addFlashAttribute("repayment",String.format("%.2f",repayment));
+			attr.addFlashAttribute("parking_e", parking_e);
+			attr.addFlashAttribute("gas",String.format("%.2f",gas));
+			attr.addFlashAttribute("difference",String.format("%.2f",difference));
 			
 			
 			return "redirect:/unpurchasable";
