@@ -1,7 +1,24 @@
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- 計算用 -->
+<!DOCTYPE html>
+<html lang="ja">
+	
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>計算してみる</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
+	</head>
+
+
+
+<div class="row">
+<div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-xs-6 col-xs-6 col-sm-6 col-md-6">
+
+<div class="col-xs-12">
 
 <form method="post" th:action="@{/calculation}">
 <link rel="stylesheet" type="text/css" href="Main.css" />  
@@ -10,12 +27,20 @@
 
 
 <ul>
-	<li>	計算結果を見てみる</li>
+	
+	<div class="col-xs-12 text-center"><h2>A計算結果を見てみる</p></h2></div>
+ 	<input class="btn btn-primary" type="submit" value="見る">
 </ul>
 
   <input type="hidden" name="car_id" th:value="${car_id}"/> 
  <input type="submit" />
 </form>
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>

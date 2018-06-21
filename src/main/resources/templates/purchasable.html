@@ -1,8 +1,21 @@
 <html lang="ja" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- 計算用 -->
-<title>購入できます！</title>
-<link rel="stylesheet" type="text/css" href="Main.css" />  
+<!DOCTYPE html>
+<html lang="ja">
+	
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>購入可能です</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+	</head>
+
+
+
+<body> 
 
 
 
@@ -23,14 +36,21 @@
 
 
 
-	<h3>月間維持費内訳</h3>
-	<p>自動車税：<span th:text="${car_t}"></span>万円</p>
-	<p>ローン支払い<span th:text ="${loan_e}"></span>万円</p>
+	<h2>月間維持費内訳</h2>
 	
+	<h3>税金・車検用積み立て</h3>
+	<table class="table table-striped">
+		<tr><th>項目</th><th>費用</th></tr>
+		<tr><td>自動車税</td><td><span th:text="${car_t}"></span>万円</td></tr>
+		<tr><td>ローン支払い</td><td><span th:text ="${loan_e}"></span>万円</td></tr>
+	</table>
 	
 	
 <input type="hidden" name="car_id" th:value="${car_id}"/> 
-
 </div>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>

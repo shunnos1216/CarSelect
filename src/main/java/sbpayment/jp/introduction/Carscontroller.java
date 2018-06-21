@@ -175,7 +175,7 @@ public class Carscontroller {
 		Map<String, Object>liability_ins = jdbc.queryForList("SELECT liability_ins FROM cars WHERE car_id = ? ", car_id).get(0);//自賠責保険
 		Map<String, Object>voluntary_ins = jdbc.queryForList("SELECT voluntary_ins FROM cars WHERE car_id = ? ", car_id).get(0);//任意保険
 		Map<String, Object>month_total = jdbc.queryForList("SELECT month_total FROM cars WHERE car_id = ? ", car_id).get(0);//月間固定費用
-		Map<String, Object>f_type = jdbc.queryForList("SELECT f_type FROM cars WHERE car_id = ? ", car_id).get(0);//油種
+		//Map<String, Object>f_type = jdbc.queryForList("SELECT f_type FROM cars WHERE car_id = ? ", car_id).get(0);//油種
 		Map<String, Object>car_price = jdbc.queryForList("SELECT price FROM price WHERE car_id = ? ", car_id).get(0);//車両価格
 		Map<String, Object>fuel = jdbc.queryForList("SELECT fuel_ec FROM fuel WHERE car_id = ? ", car_id).get(0);//燃費
 		
@@ -196,7 +196,7 @@ public class Carscontroller {
 		System.out.println(liability_ins);
 		System.out.println(voluntary_ins);
 		System.out.println(month_total);
-		System.out.println(f_type);
+		//System.out.println(f_type);
 		System.out.println(car_price);
 		System.out.println(fuel);
 		
@@ -224,8 +224,8 @@ public class Carscontroller {
 		double month_t = Double.valueOf(month_total.get("month_total").toString());//月間固定費
 		System.out.println("test月間固定費" + month_t);
 
-		Integer fuel_t = Integer.valueOf(f_type.get("f_type").toString());//油種
-		System.out.println("test油種" + fuel_t);
+//		Integer fuel_t = Integer.valueOf(f_type.get("f_type").toString());//油種
+//		System.out.println("test油種" + fuel_t);
 		
 		double car_p = Double.valueOf(car_price.get("price").toString());//車両価格
 		System.out.println("test車両価格" + car_p);

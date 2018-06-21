@@ -21,11 +21,64 @@
 	<h3>夢のカーライフを実現できるか判定するよ</h3>
 </div>
 
-<h1>どんなところでどれだけ乗りますか？</h1>
+<h1 class="page-header text-center">どんなところでどれだけ乗りますか</h1>
+
+<div class="row">
+<div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-xs-9  col-sm-9 col-md-9">
+
+
+<form class="form-horizontal" method="post" th:action="@{/cost}">　<!-- userランニングコスト情報取得　user_cost TABLEへ -->
+	
+	<div class="form-group">
+		<label class= "col-sm-3 control-label"><h2>駐車場代</h2></label>
+		<div class="col-sm-9">
+			<h2><input type="number" required step="0.01" name="parking" placeholder="駐車場代" >万円</h2>
+		</div>
+	</div>
+	
+	
+	<div class="form-group">
+		<label class= "col-sm-3 control-label"><h2>一か月の推定走行距離</h2></label>
+		<div class="col-sm-9">
+ 	 		<h2><input type="number"step="0.01" name="running" maxlength="3" placeholder="走行距離" />km</h2>
+ 	 	</div>
+ 	 </div>
+ 	 
+ 	 
+ 	  	 
+ 	 <div class="form-group">
+		<label class= "col-sm-3 control-label"><h2>頭金</h2></label>
+		<div class="col-sm-9">
+			<h2><input type="number" name="deposit" maxlength="3" placeholder="頭金" />万円</h2><br>
+		</div>
+	</div>
+ 
+	<div class="form-group">
+		<label class= "col-sm-3 control-label"><h2>ローン</h2></label>
+		<div class="col-sm-9">
+			<h2><input type="number" name="loan" placeholder="(ローンを組まない場合は0を入力)" />回払い</h2><br>
+			
+		</div>
+	</div>
+	
+	
+ 	<input type="hidden" name="car_id" th:value="${car_id}"/>
+ 	
+ 	<div class="col-sm-4"></div>
+ 	
+ 	<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
+ 	 </form>
 
 
 
 
+
+
+
+
+
+
+<!-- 以下htmlベタ打ちver -->
 <form method="post" th:action="@{/cost}">　<!-- userランニングコスト情報取得　user_cost TABLEへ -->
 	
 	
