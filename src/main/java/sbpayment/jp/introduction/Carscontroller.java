@@ -78,6 +78,24 @@ public class Carscontroller {
 		jdbc.update("INSERT INTO userspec (user_name,income,rent,utility_c,commu_c,expense_c) values(?,?,?,?,?,?);",
 				user_name, income, rent, utility_c, commu_c, expense_c); // DB userspec TABLEに格納
 
+		
+		
+		Map<String, Object> car_price = jdbc.queryForList("SELECT price FROM price WHERE car_id = ? ", car_id).get(0);// 車両価格
+		double car_p = Double.valueOf(car_price.get("price").toString());// 車両価格
+		System.out.println("/cost車両価格" + car_p);
+
+		
+		
+		
+		int a;
+		a =1;
+		
+		
+		
+		attr.addFlashAttribute("car_p", car_p);
+		
+		attr.addFlashAttribute("a", a);
+
 		// jdbc.update("UPDATE userspec SET income = ?,rent = ?, utility_c = ? , commu_c
 		// = ?",
 		// income, rent, utility_c, commu_c);
@@ -100,7 +118,7 @@ public class Carscontroller {
 		// DBから車両価格取得
 		Map<String, Object> car_price = jdbc.queryForList("SELECT price FROM price WHERE car_id = ? ", car_id).get(0);// 車両価格
 		double car_p = Double.valueOf(car_price.get("price").toString());// 車両価格
-		System.out.println("test車両価格" + car_p);
+		System.out.println("/cost車両価格" + car_p);
 
 		attr.addFlashAttribute("car_p", car_p);
 
@@ -285,8 +303,6 @@ public class Carscontroller {
 
 		System.out.println("-------------------以下判定--------------------");
 
-		
-		
 		// 購入・維持ができるか判定
 		if (budget > totalcost) {
 
@@ -310,7 +326,7 @@ public class Carscontroller {
 			attr.addFlashAttribute("loan_e", loan_e);
 			attr.addFlashAttribute("repayment", String.format("%.2f", repayment));
 			attr.addFlashAttribute("parking_e", parking_e);
-			attr.addFlashAttribute("gas", String.format("%.2f", gas));//四捨五入
+			attr.addFlashAttribute("gas", String.format("%.2f", gas));// 四捨五入
 			attr.addFlashAttribute("difference", String.format("%.2f", difference));
 			attr.addFlashAttribute("url", url);
 

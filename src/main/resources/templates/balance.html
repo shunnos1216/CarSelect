@@ -18,118 +18,137 @@
 
 
 <body>
+	<div class="container">
 
-	<div class="jumbotron text-center"
-		style="background: url(http://marumasa2001.com/car/subaru01.jpg); color: #000; backgroud-size: 100% auto;">
-		<!--  背景;文字色 -->
-		<h1>その収入でその車買えるの？</h1>
+		<div class=row>
+			<div class="jumbotron text-center"
+				style="background: url(http://marumasa2001.com/car/subaru01.jpg); color: #FFF; backgroud-size: 100% auto;">
+				<!--  背景;文字色 -->
+				<h1>その収入でその車買えるの？</h1>
 
-		<h3>夢のカーライフを実現できるか判定するよ</h3>
-	</div>
-
-
-
-
-
+				<h3>夢のカーライフを実現できるか判定するよ</h3>
+			</div>
+		</div>
 
 
 
-	<h1 class="page-header text-center">家計情報を入力してください</h1>
-	<br>
-	<br>
 
 
 
-	<div class="row">
-		<div
-			class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-xs-9  col-sm-9 col-md-9">
 
 
-			<!--  <div class=".col-md-11 .col-md-offset-1">  >
+		<h1 class="page-header text-center">家計情報を入力してください</h1>
+		<br> <br>
+
+<!-- <div class=row> -->
+<!-- 			<div class="jumbotron text-center" -->
+<!-- 				style="background: url(https://i2.wp.com/kokohen-pachinko.com/wp-content/uploads/2018/04/19d0376b1043311681b5d1bd003a1bde.jpg?fit=300%2C300&ssl=1); color: #FFF; backgroud-size: 100% auto;"> -->
+
+
+
+
+		<div class="row">
+			<div
+				class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-xs-9  col-sm-9 col-md-9">
+
+
+				<!--  <div class=".col-md-11 .col-md-offset-1">  >
 
 <!-- user情報取得　usespec TABLEへ -->
-			<form class="form-horizontal" method="post" th:action="@{/balance}">
-
-				<!-- 	<div class="form-group"> -->
-				<!-- 		<label class= "col-sm-3 control-label"><h2>お名前</h2></label> -->
-				<!-- 		<div class="col-sm-9"> -->
-				<!-- 			<h2><input type="text" required name="user_name" maxlength="20" size="20" value="河原崎" placeholder="お名前を入力してください" > さん</h2> -->
-				<!-- 		</div> -->
-				<!-- 	</div> -->
+				<form class="form-horizontal" method="post" th:action="@{/balance}">
 
 
 
-				<div class="form-group">
-					<label class="col-sm-3 control-label"><h2>月収</h2></label>
-					<div class="col-sm-9">
-						<h2>
-							<input type="text" required step="0.01" name="income"
-								maxlength="3" size="20" value="20" placeholder="月収"> 万円
-						</h2>
+
+
+					<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><h2>月収</h2></label>
+							<div class="col-sm-10">
+								<h2>
+									<input type="text" required step="0.01" name="income"
+										maxlength="3" size="20" value="20" placeholder="月収">
+									万円
+								</h2>
+							</div>
+						</div>
 					</div>
-				</div>
 
 
-				<div class="form-group">
-					<label class="col-sm-3 control-label"><h2>家賃</h2></label>
-					<div class="col-sm-9">
-						<h2>
-							<input type="text" required step="0.01" name="rent" value="6"
-								placeholder="家賃" /> 万円
-						</h2>
+					<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><h2>家賃</h2></label>
+							<div class="col-sm-20">
+								<h2>
+									<input type="text" required step="0.01" maxlength="4" name="rent" value="6"
+										placeholder="家賃" /> 万円
+								</h2>
+							</div>
+						</div>
 					</div>
-				</div>
 
 
-				<div class="form-group">
-					<label class="col-sm-3 control-label"><h2>光熱費</h2></label>
-					<div class="col-sm-9">
+					<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><h2>光熱費</h2></label>
+							<div class="col-sm-10">
+								<h2>
+									<input type="text" required step="0.01" maxlength="4" name="utility_c"
+										value="1" placeholder="光熱費" /> 万円
+								</h2>
+								<br>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><h2>通信費</h2></label>
+							<div class="col-sm-10">
+								<h2>
+									<input type="text" required step="0.01" maxlength="4" name="commu_c"
+										value="0.5" placeholder="通信費" /> 万円
+								</h2>
+								<br>
+							</div>
+						</div>
+					</div>
+
+
+<div class="row">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><h2>交際費</h2></label>
+						<div class="col-sm-10"></div>
 						<h2>
-							<input type="text" required step="0.01" name="utility_c"
-								value="1" placeholder="光熱費" /> 万円
+							<input type="text" required step="0.01" name="expense_c" maxlength="4"
+								value="1.5" placeholder="交際費" /> 万円
 						</h2>
 						<br>
 					</div>
-				</div>
+			</div>
+
+			<br> <br> <br> <br> <input type="hidden"
+				name="car_id" th:value="${car_id}" />
 
 
-				<div class="form-group">
-					<label class="col-sm-3 control-label"><h2>通信費</h2></label>
-					<div class="col-sm-9">
-						<h2>
-							<input type="text" required step="0.01" name="commu_c"
-								value="0.5" placeholder="通信費" /> 万円
-						</h2>
-						<br>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label class="col-sm-3 control-label"><h2>交際費</h2></label>
-					<div class="col-sm-9"></div>
-					<h2>
-						<input type="text" required step="0.01" name="expense_c"
-							value="1.5" placeholder="交際費" />万円
-					</h2>
-					<br>
-				</div>
+			<div class="col-sm-offset-4 col-sm-8">
+				<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
+			</div>
+			<!--  	<input type="button" class="btn btn-primary" value="送信"> -->
+			<!--  	 <input type="submit" value = 送信> -->
 		</div>
-		<br> <br> <br> <br> <input type="hidden"
-			name="car_id" th:value="${car_id}" />
 
-
-		<div class="col-sm-offset-6 col-sm-6">
-			<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
-		</div>
-		<!--  	<input type="button" class="btn btn-primary" value="送信"> -->
-		<!--  	 <input type="submit" value = 送信> -->
-
-
-
-		</form>
 	</div>
-	</div>
-	</div>
+
+
+
+
+
+
+
+	</form>
+
+
 
 	<!-- <form method="post" th:action="@{/balance}">　user情報取得　usespec TABLEへ -->
 
@@ -161,6 +180,7 @@
 	<!-- </form> -->
 
 
+	</div>
 
 
 	<script

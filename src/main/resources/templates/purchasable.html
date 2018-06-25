@@ -16,179 +16,198 @@
 
 </head>
 <body>
+	<div class="container">
+		<div class="jumbotron text-center"
+			style="background: url(nousya.jpg); color: #000; backgroud-size: 100% auto;">
+			<!-- 背景;文字色 -->
+			<h1>購入できます</h1>
+		</div>
 
-	<div class="jumbotron text-center"
-		style="background: url(nousya.jpg); color: #000; backgroud-size: 100% auto;">
-		<!-- 背景;文字色 -->
-		<h1>購入できます</h1>
-	</div>
+		<div 　 method="post" th:action="@{/calculation}">
 
-	<div 　 method="post" th:action="@{/calculation}">
+			<div class="row">
+				<div
+					class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8  col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 ">
 
-		<div class="row">
-			<div
-				class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8  col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 ">
-
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<div class="panel-title">
-							<h1>
-								<div class="text-center">
-									あなたは<span th:text="${car_name}"></span>を購入することができます！
-								</div>
-							</h1>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<div class="panel-title">
+								<h1>
+									<div class="text-center">
+										あなたは<span th:text="${car_name}"></span>を購入することができます！
+									</div>
+								</h1>
+							</div>
 						</div>
-					</div>
-					<div class="panel-body">
+						<div class="panel-body">
 
-						<br>
-
-
-						<div class="text-center">
-							<h2>
-								<p>
-								<li type="sqare">あなたの収入から月々の車に使えるお金
-									</p>
-							</h2>
-							</li>
-						</div>
-						<div class="text-center">
-							<h2>
-								<span th:text="${budget}"></span>万円
-							</h2>
-						</div>
+							<br>
 
 
-
-
-						<div class="text-center">
-							<h2>
-								<p>
-								<li type="sqare">今回の条件で<span th:text="${car_name}"></span>を購入・維持するのに必要な月々な支出
-									</p>
-							</h2>
-							</li>
-						</div>
-						<div class="text-center">
-							<h2>
-								<span th:text="${totalcost}"></span>万円
-							</h2>
-						</div>
-						<br> <br>
-
-
-						<div class="text-center">
-							<h2>
-								<span th:text="${car_name}"></span>を購入したら自由に使えるお金
-							</h2>
-						</div>
-						<div class="text-center">
-							<h2>
-								およそ<span class="text-danger"></font><span
-									th:text="${difference}"></span>万円</span></font>になります！
-							</h2>
 							<div class="text-center">
-								<h2>「愛車」のためなら節約できますよね。</h2>
+								<h2>
+									<p>
+									<li type="sqare">あなたの収入から月々の車に使えるお金
+										</p>
+								</h2>
+								</li>
+							</div>
+							<div class="text-center">
+								<h2>
+									<span th:text="${budget}"></span>万円
+								</h2>
+							</div>
+
+
+
+
+							<div class="text-center">
+								<h2>
+									<p>
+									<li type="sqare">今回の条件で<span th:text="${car_name}"></span>を購入・維持するのに必要な月々な支出
+										</p>
+								</h2>
+								</li>
+							</div>
+							<div class="text-center">
+								<h2>
+									<span th:text="${totalcost}"></span>万円
+								</h2>
+							</div>
+							<br> <br>
+
+
+							<div class="text-center">
+								<h2>
+									<span th:text="${car_name}"></span>を購入したら自由に使えるお金
+								</h2>
+							</div>
+							<div class="text-center">
+								<h2>
+									およそ<span class="text-danger"></font><span
+										th:text="${difference}"></span>万円</span></font>になります！
+								</h2>
+								<div class="text-center">
+									<h2>「愛車」のためなら節約できますよね。</h2>
+								</div>
 							</div>
 						</div>
 					</div>
+
+
+
+				<div class="panel panel-primary">
+						<div class="panel-heading">
+							<div class="panel-title">
+								<h1>
+									<div class="text-center">月間維持費内訳</div>
+								</h1>
+							</div>
+						</div>
+						<div class="panel-body"></div>
+						<h2 class="text-center">
+							あなたが<span th:text="${car_name}"></span>を維持するのに毎月これだけのお金が掛かります
+						</h2>
+<br>
+<br>
+
+						<div class="text-center">
+							<h2>1.税金・車検用積み立て</h2>
+						</div>
+
+						<!--  表1 税金・車検用積み立て表 -->
+						<table
+							class="table table-bordered table-striped table-hover table-condensed">
+
+							<thead>
+								<tr>
+									<th><h3>項目</h3></th>
+									<th><h3>費用</h3></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><h3>自動車税</h3></td>
+									<td><h3>
+											<span th:text="${car_t}"></span>万円
+										</h3></td>
+								</tr>
+								<tr>
+									<td><h3>重量税</h3></td>
+									<td><h3>
+											<span th:text="${weight_t}"></span>万円
+										</h3></td>
+								</tr>
+								<tr>
+									<td><h3>自賠責</h3></td>
+									<td><h3>
+											<span th:text="${liability_i}"></span>万円
+										</h3></td>
+								</tr>
+							</tbody>
+						</table>
+
+<br>
+<br>
+
+						<div class="text-center">
+							<h2>2.月々の支払額</h2>
+						</div>
+						<!--  表2 月々の支払額 -->
+						<table
+							class="table table-bordered table-striped table-hover table-condensed">
+
+							<thead>
+								<tr>
+									<th><h3>項目</h3></th>
+									<th><h3>費用</h3></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><h3>ローン支払い</h3></td>
+									<td><h3>
+											<span th:text="${repayment}"></span>万円
+										</h3></td>
+								</tr>
+								<tr>
+									<td><h3>ガソリン代</h3></td>
+									<td><h3>
+											<span th:text="${gas}"></span>万円
+										</h3></td>
+								</tr>
+								<tr>
+									<td><h3>任意保険料</h3></td>
+									<td><h3>
+											<span th:text="${voluntary_i}"></span>万円
+										</h3></td>
+								</tr>
+								<tr>
+									<td><h3>駐車場代</h3></td>
+									<td><h3>
+											<span th:text="${parking_e}"></span>万円
+										</h3></td>
+								</tr>
+							</tbody>
+						</table>
+						</div>
+
+
+
+					<div class="text-center">
+						<h3>
+							<li>他のクラスの車を検討してみる</li>
+						</h3>
+						<a href="index" class="btn btn-warning btn-lg" role="button">
+							再度診断する</a>
+
+					</div>
 				</div>
-
-
-
-				<h1 class="text-center">月間維持費内訳</h1>
-				<br>
-
-				<h2 class="text-center">
-					<span th:text="${car_name}"></span>を維持するのに毎月これだけのお金が掛かります
-				</h2>
-
-
-				<div class="text-center">
-					<h3>税金・車検用積み立て</h3>
-				</div>
-				<!--  表1 税金・車検用積み立て表 -->
-				<table
-					class="table table-bordered table-striped table-hover table-condensed">
-
-					<thead>
-						<tr>
-							<th><h3>項目</h3></th>
-							<th><h3>費用</h3></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><h3>自動車税</h3></td>
-							<td><h3>
-									<span th:text="${car_t}"></span>万円
-								</h3></td>
-						</tr>
-						<tr>
-							<td><h3>重量税</h3></td>
-							<td><h3>
-									<span th:text="${weight_t}"></span>万円
-								</h3></td>
-						</tr>
-						<tr>
-							<td><h3>自賠責</h3></td>
-							<td><h3>
-									<span th:text="${liability_i}"></span>万円
-								</h3></td>
-						</tr>
-					</tbody>
-				</table>
-
-
-
-				<div class="text-center">
-					<h2>月々の支払額</h2>
-				</div>
-				<!--  表2 月々の支払額 -->
-				<table
-					class="table table-bordered table-striped table-hover table-condensed">
-
-					<thead>
-						<tr>
-							<th><h3>項目</h3></th>
-							<th><h3>費用</h3></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td><h3>ローン支払い</h3></td>
-							<td><h3>
-									<span th:text="${repayment}"></span>万円
-								</h3></td>
-						</tr>
-						<tr>
-							<td><h3>ガソリン代</h3></td>
-							<td><h3>
-									<span th:text="${gas}"></span>万円
-								</h3></td>
-						</tr>
-						<tr>
-							<td><h3>任意保険料</h3></td>
-							<td><h3>
-									<span th:text="${voluntary_i}"></span>万円
-								</h3></td>
-						</tr>
-						<tr>
-							<td><h3>駐車場代</h3></td>
-							<td><h3>
-									<span th:text="${parking_e}"></span>万円
-								</h3></td>
-						</tr>
-					</tbody>
-				</table>
-
-
 
 			</div>
-
 		</div>
-	</div>
 
+	</div>
 	<script
 		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script
