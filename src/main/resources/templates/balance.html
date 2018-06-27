@@ -40,9 +40,9 @@
 		<h1 class="page-header text-center">家計情報を入力してください</h1>
 		<br> <br>
 
-<!-- <div class=row> -->
-<!-- 			<div class="jumbotron text-center" -->
-<!-- 				style="background: url(https://i2.wp.com/kokohen-pachinko.com/wp-content/uploads/2018/04/19d0376b1043311681b5d1bd003a1bde.jpg?fit=300%2C300&ssl=1); color: #FFF; backgroud-size: 100% auto;"> -->
+		<!-- <div class=row> -->
+		<!-- 			<div class="jumbotron text-center" -->
+		<!-- 				style="background: url(https://i2.wp.com/kokohen-pachinko.com/wp-content/uploads/2018/04/19d0376b1043311681b5d1bd003a1bde.jpg?fit=300%2C300&ssl=1); color: #FFF; backgroud-size: 100% auto;"> -->
 
 
 
@@ -66,9 +66,8 @@
 							<label class="col-sm-2 control-label"><h2>月収</h2></label>
 							<div class="col-sm-10">
 								<h2>
-									<input type="text" required step="0.01" name="income"
-										maxlength="3" size="20" value="20" placeholder="月収">
-									万円
+									<input type="number" required step="0.01" name="income"
+										max="100" value="20" placeholder="月収" style="width:350px;"> 万円
 								</h2>
 							</div>
 						</div>
@@ -78,10 +77,10 @@
 					<div class="row">
 						<div class="form-group">
 							<label class="col-sm-2 control-label"><h2>家賃</h2></label>
-							<div class="col-sm-20">
+							<div class="col-sm-10">
 								<h2>
-									<input type="text" required step="0.01" maxlength="4" name="rent" value="6"
-										placeholder="家賃" /> 万円
+									<input type="number" required step="0.01" max="100" name="rent"
+										value="6" placeholder="家賃"  style="width:350px;"> 万円
 								</h2>
 							</div>
 						</div>
@@ -93,10 +92,10 @@
 							<label class="col-sm-2 control-label"><h2>光熱費</h2></label>
 							<div class="col-sm-10">
 								<h2>
-									<input type="text" required step="0.01" maxlength="4" name="utility_c"
-										value="1" placeholder="光熱費" /> 万円
+									<input type="number" required step="0.01" max="20"
+										name="utility_c" value="1" placeholder="光熱費" style="width:350px;"> 万円
 								</h2>
-								<br>
+
 							</div>
 						</div>
 					</div>
@@ -106,78 +105,79 @@
 							<label class="col-sm-2 control-label"><h2>通信費</h2></label>
 							<div class="col-sm-10">
 								<h2>
-									<input type="text" required step="0.01" maxlength="4" name="commu_c"
-										value="0.5" placeholder="通信費" /> 万円
+									<input type="number" required step="0.01" max="20"
+										name="commu_c" value="0.5" placeholder="通信費" style="width:350px;"> 万円
 								</h2>
-								<br>
+
 							</div>
 						</div>
 					</div>
 
 
-<div class="row">
-					<div class="form-group">
-						<label class="col-sm-2 control-label"><h2>交際費</h2></label>
-						<div class="col-sm-10"></div>
-						<h2>
-							<input type="text" required step="0.01" name="expense_c" maxlength="4"
-								value="1.5" placeholder="交際費" /> 万円
-						</h2>
-						<br>
+					<div class="row">
+						<div class="form-group">
+							<label class="col-sm-2 control-label"><h2>交際費</h2></label>
+							<div class="col-sm-10">
+								<h2>
+									<input type="number" required step="0.01" name="expense_c"
+										max="100" value="1.5" placeholder="交際費"  style="width:350px;"> 万円
+								</h2>
+							</div>
+						</div>
 					</div>
+
+					<br> <br> <br> <br> <input type="hidden"
+						name="car_id" th:value="${car_id}" />
+
+
+					<div class="col-sm-offset-4 col-sm-8">
+						<input class="btn btn-primary btn btn-lg " type="submit"
+							value="送信">
+					</div>
+					<!--  	<input type="button" class="btn btn-primary" value="送信"> -->
+					<!--  	 <input type="submit" value = 送信> -->
 			</div>
 
-			<br> <br> <br> <br> <input type="hidden"
-				name="car_id" th:value="${car_id}" />
-
-
-			<div class="col-sm-offset-4 col-sm-8">
-				<input class="btn btn-primary btn btn-lg " type="submit" value="送信">
-			</div>
-			<!--  	<input type="button" class="btn btn-primary" value="送信"> -->
-			<!--  	 <input type="submit" value = 送信> -->
 		</div>
 
-	</div>
 
 
 
 
 
 
-
-	</form>
-
-
-
-	<!-- <form method="post" th:action="@{/balance}">　user情報取得　usespec TABLEへ -->
-
-
-	<!-- 	<p>名前</p> -->
-	<!-- 	<input type="text" required name="user_name" placeholder="お名前を入力してください" >万円 -->
-
-	<!-- 	<p>月収</p> -->
-	<!-- 	<input type="number" required step="0.01" name="income" placeholder="月収" >万円 -->
-	<!--  	 <p>家賃</p> -->
-	<!--  	 <input type="number" required step="0.01" name="rent" placeholder="家賃" />万円 -->
-
-	<!-- 	<p>光熱費</p> -->
-	<!-- 	<input type="number" required step="0.01" name="utility_c" placeholder="光熱費" />万円<br> -->
-
-	<!--  	<p>通信費</p> -->
-	<!--  	<input type="number" required step="0.01" name="commu_c" placeholder="通信費" />万円<br> -->
-
-	<!--  	<p>交際費</p> -->
-	<!--  	<input type="number" required step="0.01" name="expense_c" placeholder="交際費" />万円<br> -->
-
-
-	<!--  	 <input type="hidden" name="car_id" th:value="${car_id}"/>  -->
-
-	<!--  	 <input type="submit" value = 送信> -->
+		</form>
 
 
 
-	<!-- </form> -->
+		<!-- <form method="post" th:action="@{/balance}">　user情報取得　usespec TABLEへ -->
+
+
+		<!-- 	<p>名前</p> -->
+		<!-- 	<input type="text" required name="user_name" placeholder="お名前を入力してください" >万円 -->
+
+		<!-- 	<p>月収</p> -->
+		<!-- 	<input type="number" required step="0.01" name="income" placeholder="月収" >万円 -->
+		<!--  	 <p>家賃</p> -->
+		<!--  	 <input type="number" required step="0.01" name="rent" placeholder="家賃" />万円 -->
+
+		<!-- 	<p>光熱費</p> -->
+		<!-- 	<input type="number" required step="0.01" name="utility_c" placeholder="光熱費" />万円<br> -->
+
+		<!--  	<p>通信費</p> -->
+		<!--  	<input type="number" required step="0.01" name="commu_c" placeholder="通信費" />万円<br> -->
+
+		<!--  	<p>交際費</p> -->
+		<!--  	<input type="number" required step="0.01" name="expense_c" placeholder="交際費" />万円<br> -->
+
+
+		<!--  	 <input type="hidden" name="car_id" th:value="${car_id}"/>  -->
+
+		<!--  	 <input type="submit" value = 送信> -->
+
+
+
+		<!-- </form> -->
 
 
 	</div>

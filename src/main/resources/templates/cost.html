@@ -44,23 +44,25 @@
 			<div class="row">
 				<div class="form-group">
 
+					<div class="col-sm-offset-2 col-sm-10">
+						<div class="text-center">
+							<a href="https://www.athome.co.jp/rent/02/" target="_blank"><h3>月極駐車場を探す</h3></a>
+						</div>
+					</div>
 					<label class="col-sm-5 control-label"><h2>駐車場代</h2></label>
 					<div class="col-sm-7">
 						<h2>
-							<input type="text" required step="0.01" name="parking"
-								maxlength="4" max="10" placeholder="駐車場代">万円
+							<input type="number" required step="0.01" name="parking"
+								maxlength="4" max="10" placeholder="駐車場代" style="width: 350px;">万円
 
 
 						</h2>
+						<p class="help-block">※駐車場を借りない場合は0を入力してください</p>
 					</div>
 				</div>
 			</div>
-			
-			<div class="col-sm-offset-2 col-sm-10">
-				<div class="text-center">
-					<a href="https://www.athome.co.jp/rent/02/" target="_blank"><h3>月極駐車場を探す</h3></a>
-				</div>
-			</div>
+
+
 
 
 
@@ -71,8 +73,9 @@
 					<label class="col-sm-5 control-label"><h2>月間走行距離</h2></label>
 					<div class="col-sm-7">
 						<h2>
-							<input type="text" required step="0.01" name="running"
-								maxlength="4" placeholder="走行距離">km
+							<input type="number" min="10" max="8000" required step="0.01"
+								name="running" maxlength="4" placeholder="走行距離"
+								style="width: 350px;">km
 						</h2>
 					</div>
 				</div>
@@ -87,8 +90,9 @@
 							<!-- 車種別の価格を持ってきてそれ以上の値が頭金のフォームに入力されないようにする -->
 							<!--								<input type="text" required name="deposit" 
 									max="th:text="${a}"" placeholder="頭金">万円 -->
-							<input type="number" required maxlength="3" name="deposit" max="10"
-								th:max="${car_p}" placeholder="頭金">万円
+							<input type="number" required maxlength="3" name="deposit"
+								max="10" th:max="${car_p}" placeholder="頭金"
+								style="width: 350px;">万円
 						</h2>
 						<br>
 					</div>
@@ -101,12 +105,13 @@
 					<label class="col-sm-5 control-label"><h2>ローン</h2></label>
 					<div class="col-sm-7">
 						<h2>
-							<input type="text" maxlength="2" required name="loan"
-								placeholder="(組まない場合は0を入力)">回払い
-							<p class="help-block">
-							<h3>※ローンを組まない場合は0を入力してください</h3>
-							</p>
+							<input type="number" min="1" max="72" required name="loan"
+								placeholder="(支払い回数)" style="width: 350px;">回払い
 						</h2>
+						<p class="help-block">※ローンを組まない場合は1を入力してください</p>
+
+
+
 						<br>
 
 					</div>
