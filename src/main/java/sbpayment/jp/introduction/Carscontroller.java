@@ -57,7 +57,7 @@ public class Carscontroller {
 
 		System.out.println("checked PM1");// 確認用
 
-		attr.addFlashAttribute("user_name", user_name);
+//		attr.addFlashAttribute("user_name", user_name);
 		attr.addFlashAttribute("income", income);
 		attr.addFlashAttribute("rent", rent);
 		attr.addFlashAttribute("utility_c", utility_c);
@@ -75,8 +75,8 @@ public class Carscontroller {
 		System.out.println(expense_c);
 		System.out.println("car_id:" + car_id);
 
-		jdbc.update("INSERT INTO userspec (user_name,income,rent,utility_c,commu_c,expense_c) values(?,?,?,?,?,?);",
-				user_name, income, rent, utility_c, commu_c, expense_c); // DB userspec TABLEに格納
+		jdbc.update("INSERT INTO userspec (income,rent,utility_c,commu_c,expense_c) values(?,?,?,?,?);",
+				 income, rent, utility_c, commu_c, expense_c); // DB userspec TABLEに格納
 
 		
 		

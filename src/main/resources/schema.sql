@@ -14,8 +14,8 @@
  	
 /* 	価格表*/
  CREATE TABLE price(
- 	car_id INT, price FLOAT  
- 	); 	
+ 	car_id INT, price FLOAT
+ 	);
  /*価格（万円）*/
  INSERT INTO price VALUES
  	(1, 450.0), (2, 1170.0), (3, 183.0), (4, 187.0), (5, 188.0), (6, 135.0),
@@ -32,23 +32,20 @@
  	(7,  6.5), (8, 6.7), (9, 11.6), (10, 13.2), (11,37.2), (12, 16.0);
  
  
-
- 	 	
 /* 	ユーザー情報入力用テーブル*/
-　CREATE TABLE userspec(
- 	user_name VARCHAR(200), income FLOAT,rent FLOAT, utility_c FLOAT, commu_c FLOAT, expense_c FLOAT, budget FLOAT,
- 	parking FLOAT,running FLOAT,deposit FLOAT, loan FLOAT);
- 	
- 	
- 	
+CREATE TABLE userspec(
+  income FLOAT,rent FLOAT, utility_c FLOAT, commu_c FLOAT, expense_c FLOAT, budget FLOAT,
+  parking FLOAT,running FLOAT,deposit FLOAT, loan FLOAT);
+
+ 
 /*結果格納テーブル　入力内容と計算結果をDBへ再び格納*/
-　CREATE TABLE result(
+/*CREATE TABLE result(
  	car_id int, car_tax FLOAT, weight_tax FLOAT, liability_ins FLOAT, voluntary_ins FLOAT, month_total FLOAT, f_type FLOAT,  price FLOAT,fuel_ec FLOAT, income FLOAT, rent FLOAT, utility_c FLOAT, comm_c FLOAT,parking FLOAT, running FLOAT, loan FLOAT,
  	repayment FLOAT, gas FLOAT, totalcost FLOAT, budget FLOAT);
- 		
+*/	
  
 /* 	ユーザー情報入力用テーブル2*/
-/*　CREATE TABLE user_cost(
+/* CREATE TABLE user_cost(
  	user_id INT, parking FLOAT,running FLOAT, loan INT,
  	PRIMARY KEY(user_id));*/
  	 
